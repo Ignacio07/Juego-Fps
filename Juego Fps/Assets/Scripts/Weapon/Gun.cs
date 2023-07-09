@@ -21,6 +21,7 @@ public class Gun : MonoBehaviour
     public float fireDelay = 0.4f; // Delay entre disparos en segundos
     public Image cooldownBar;
     private float lastFireTime; // Tiempo del último disparo
+    public PauseMenu pauseMenu;
 
     void Start()
     {
@@ -45,7 +46,7 @@ public class Gun : MonoBehaviour
 
         if (timeSinceLastFire >= fireDelay)
         {
-            if (Input.GetMouseButtonDown(0) && ammo > 0)
+            if (Input.GetMouseButtonDown(0) && ammo > 0 && pauseMenu.GameIsPaused == false)
             {
                 animatorBool = true;
                 FireBullet();
