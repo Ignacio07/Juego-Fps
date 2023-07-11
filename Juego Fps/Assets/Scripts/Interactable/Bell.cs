@@ -7,22 +7,24 @@ using UnityEngine;
 public class Bell : Interactable
 {
     private bool isCounting = false;
-    private float timer = 0f;
+    public float timer = 0f;
     public float duration = 5f; // Duración del contador en segundos
     public TextMeshProUGUI timerText; // Referencia al objeto TextMeshProUGUI
 
-    private int score = 0;
+    public int score = 0;
     public int maxScore = 0;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI maxScoreText;
 
+    public AudioSource audioSource; // Referencia al componente AudioSource
+    public AudioClip newMusic; // Nueva música que se reproducirá
+    private AudioClip previousMusic; // Música anterior
+
     // Start is called before the first frame update
     void Start()
     {
-     
-        
-
-        
+        previousMusic = audioSource.clip;
+        LoadData();
     }   
 
     // Update is called once per frame
@@ -31,6 +33,7 @@ public class Bell : Interactable
         // Verificar si se ha presionado la tecla "E" y comenzar el contador
         if (Input.GetKeyDown(KeyCode.E))
         {
+            StartEvent();
             StartTimer();
            
         }
@@ -39,16 +42,22 @@ public class Bell : Interactable
         if (isCounting)
         {
             timer += Time.deltaTime;
-
+            if (timer >= duration)
+            {
+                if (score > maxScore)
+                {
+                    maxScore = score; // Actualizar el puntaje máximo
+                    SaveData(); 
+                }
+                timer = 0f;
+                isCounting = false;
+                score = 0;
+                EndEvent();
+            }
             // Actualizar el texto del temporizador en la UI
             UpdateText();
 
-            if (timer >= duration)
-            {
-                AddScore();
-                timer = 0f;
-                isCounting = false;
-            }
+            
             
         }
     }
@@ -84,13 +93,35 @@ public class Bell : Interactable
         score++; // Aumentar el puntaje en 1
 
         // Verificar si se ha superado el puntaje máximo
-        if (score > maxScore)
-        {
-            maxScore = score; // Actualizar el puntaje máximo
-        }
+        
 
-        Debug.Log("Puntaje: " + score);
-        Debug.Log("Puntaje máximo: " + maxScore);
+        
+    }
+
+    public void SaveData()
+    {
+        //Se guarda el dato int con el score maximo
+        PlayerPrefs.SetInt("MaxScore", maxScore);
+
+        Debug.Log("Guardando datos....");
+    }
+    public void LoadData()
+    {
+        //Se cargan los datos
+        maxScore = PlayerPrefs.GetInt("MaxScore");
+    }
+
+    public void StartEvent()
+    {
+        // Cambiar la música al comenzar el evento
+        audioSource.clip = newMusic;
+        audioSource.Play();
+    }
+    public void EndEvent()
+    {
+        // Reanudar la música anterior después de que termine el evento
+        audioSource.clip = previousMusic;
+        audioSource.Play();
     }
 
 }

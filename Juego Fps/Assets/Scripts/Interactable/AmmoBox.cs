@@ -17,22 +17,28 @@ public class AmmoBox : Interactable
         audioSource = player.GetComponent<AudioSource>();
     }
 
-    protected override void Interact()
+    void Update()
     {
-        Debug.Log("Interaccion con " + gameObject.name);
-        if(gun.maxAmmo != gun.ammo)
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            audioSource.clip = reloadSound;
-            if((gun.maxAmmo - gun.ammo) < dropAmmo)
+            if (gun.maxAmmo != gun.ammo)
             {
-                gun.ammo =  gun.ammo + (gun.maxAmmo - gun.ammo);
-            }else{
-                gun.ammo = gun.ammo + dropAmmo;
+                audioSource.clip = reloadSound;
+                if ((gun.maxAmmo - gun.ammo) < dropAmmo)
+                {
+                    gun.ammo = gun.ammo + (gun.maxAmmo - gun.ammo);
+                }
+                else
+                {
+                    gun.ammo = gun.ammo + dropAmmo;
+                }
             }
-        }else{
-            audioSource.clip = errorSound;
+            else
+            {
+                audioSource.clip = errorSound;
+            }
+            audioSource.Play();
+            gun.ammoDisplay.text = gun.ammo.ToString() + " / " + gun.maxAmmo.ToString();
         }
-        audioSource.Play();
-        gun.ammoDisplay.text = gun.ammo.ToString() + " / " + gun.maxAmmo.ToString();
     }
 }
