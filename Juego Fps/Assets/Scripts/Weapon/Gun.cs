@@ -55,7 +55,7 @@ public class Gun : MonoBehaviour
                 lastFireTime = Time.time;
             }
         }
-
+         
         animator.SetBool("Shoot", animatorBool);
     }
 
