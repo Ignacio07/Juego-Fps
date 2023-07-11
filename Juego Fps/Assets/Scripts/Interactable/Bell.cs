@@ -13,8 +13,8 @@ public class Bell : Interactable
 
     public int score = 0;
     public int maxScore = 0;
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI maxScoreText;
+    public TextMeshProUGUI scoreText; // Referencia al objeto TextMeshProUGUI
+    public TextMeshProUGUI maxScoreText; // Referencia al objeto TextMeshProUGUI
 
     public AudioSource audioSource; // Referencia al componente AudioSource
     public AudioClip newMusic; // Nueva música que se reproducirá
@@ -30,7 +30,7 @@ public class Bell : Interactable
     // Update is called once per frame
     void Update()
     {
-        // Verificar si se ha presionado la tecla "E" y comenzar el contador
+        // Verificar si se ha presionado la tecla "E" y comenzar 
         if (Input.GetKeyDown(KeyCode.E))
         {
             StartEvent();
@@ -47,14 +47,14 @@ public class Bell : Interactable
                 if (score > maxScore)
                 {
                     maxScore = score; // Actualizar el puntaje máximo
-                    SaveData(); 
+                    SaveData(); //Guardar datos
                 }
                 timer = 0f;
                 isCounting = false;
                 score = 0;
                 EndEvent();
             }
-            // Actualizar el texto del temporizador en la UI
+            // Actualizar el texto 
             UpdateText();
 
             
@@ -77,7 +77,7 @@ public class Bell : Interactable
         scoreText.text = score.ToString();
         maxScoreText.text = maxScore.ToString();
 
-        // Actualizar el texto del temporizador en la UI
+        // Actualizar el texto 
         UpdateText();
     }
 
@@ -87,15 +87,6 @@ public class Bell : Interactable
         timerText.text = "Tiempo: " + timer.ToString("0.00");
         scoreText.text = "Score: " + score.ToString();
         maxScoreText.text = "MaxScore: " + maxScore.ToString(); 
-    }
-    private void AddScore()
-    {
-        score++; // Aumentar el puntaje en 1
-
-        // Verificar si se ha superado el puntaje máximo
-        
-
-        
     }
 
     public void SaveData()

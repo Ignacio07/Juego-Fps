@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class AnimatorTarget : MonoBehaviour
 {
     public Bell bell;
-    public Bullet bullet;
 
     [SerializeField] private Animator _animator;
     // Start is called before the first frame update
@@ -22,12 +22,12 @@ public class AnimatorTarget : MonoBehaviour
         {
             _animator.SetTrigger("Idle");
         }
-        else if (Random.value > 0.8f && bell.duration != bell.timer)
+        else if (bell.timer < bell.duration)
         {
-            _animator.SetTrigger("Rise");  
+            float randomTime = Random.Range(0f, bell.duration - bell.timer);
+            StartCoroutine(RiseAfterDelay(randomTime));
         }
 
-        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -38,6 +38,11 @@ public class AnimatorTarget : MonoBehaviour
             Debug.Log("Puntaje: " + bell.score);
             bell.score += 1;
         }
+    }
+    private IEnumerator RiseAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        _animator.SetTrigger("Rise");
     }
 
 
