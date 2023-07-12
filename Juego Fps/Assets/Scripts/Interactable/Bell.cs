@@ -8,7 +8,7 @@ public class Bell : Interactable
 {
     private bool isCounting = false;
     public float timer = 0f;
-    public float duration = 5f; // Duración del contador en segundos
+    public float duration = 5f; // Duraciï¿½n del contador en segundos
     public TextMeshProUGUI timerText; // Referencia al objeto TextMeshProUGUI
 
     public int score = 0;
@@ -17,8 +17,8 @@ public class Bell : Interactable
     public TextMeshProUGUI maxScoreText; // Referencia al objeto TextMeshProUGUI
 
     public AudioSource audioSource; // Referencia al componente AudioSource
-    public AudioClip newMusic; // Nueva música que se reproducirá
-    private AudioClip previousMusic; // Música anterior
+    public AudioClip newMusic; // Nueva mï¿½sica que se reproducirï¿½
+    private AudioClip previousMusic; // Mï¿½sica anterior
 
     // Start is called before the first frame update
     void Start()
@@ -30,15 +30,7 @@ public class Bell : Interactable
     // Update is called once per frame
     void Update()
     {
-        // Verificar si se ha presionado la tecla "E" y comenzar 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            StartEvent();
-            StartTimer();
-           
-        }
-
-        // Si el contador está activo, incrementar el tiempo y verificar si ha alcanzado la duración deseada
+        // Si el contador estï¿½ activo, incrementar el tiempo y verificar si ha alcanzado la duraciï¿½n deseada
         if (isCounting)
         {
             timer += Time.deltaTime;
@@ -46,7 +38,7 @@ public class Bell : Interactable
             {
                 if (score > maxScore)
                 {
-                    maxScore = score; // Actualizar el puntaje máximo
+                    maxScore = score; // Actualizar el puntaje mï¿½ximo
                     SaveData(); //Guardar datos
                 }
                 timer = 0f;
@@ -56,15 +48,14 @@ public class Bell : Interactable
             }
             // Actualizar el texto 
             UpdateText();
-
-            
-            
         }
     }
 
     protected override void Interact()
     {
-        Debug.Log("Interacción con " + gameObject.name);
+        StartEvent();
+        StartTimer();
+        Debug.Log("Interacciï¿½n con " + gameObject.name);
     }
 
     private void StartTimer()
@@ -104,13 +95,13 @@ public class Bell : Interactable
 
     public void StartEvent()
     {
-        // Cambiar la música al comenzar el evento
+        // Cambiar la mï¿½sica al comenzar el evento
         audioSource.clip = newMusic;
         audioSource.Play();
     }
     public void EndEvent()
     {
-        // Reanudar la música anterior después de que termine el evento
+        // Reanudar la mï¿½sica anterior despuï¿½s de que termine el evento
         audioSource.clip = previousMusic;
         audioSource.Play();
     }

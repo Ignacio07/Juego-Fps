@@ -634,7 +634,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: 177.2138}
+  m_AnchoredPosition: {x: 7.4263916, y: 100.68884}
   m_SizeDelta: {x: 638.5644, y: 147.3595}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &211599508
@@ -1919,7 +1919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457d16d3541b0af4a923d18e572f963d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptMessage: "Recargar Munici\xF3n \"R\""
+  promptMessage: "Recargar Munici\xF3n (E)"
   player: {fileID: 940404667}
   dropAmmo: 15
   reloadSound: {fileID: 8300000, guid: 5c8792158a2bbc5469501bdaa3bb4059, type: 3}
@@ -3854,7 +3854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a9090fd0a4e52479417e06e78fc67f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptMessage: Empezar Juego "E"
+  promptMessage: Empezar Juego (E)
   timer: 0
   duration: 20
   timerText: {fileID: 1178114776}
@@ -3934,7 +3934,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.9999967, y: -6.786194}
+  m_AnchoredPosition: {x: 7.426388, y: -83.31116}
   m_SizeDelta: {x: 760.722, y: 128.0139}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1720601484
@@ -4067,7 +4067,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: d094d1aacc2b90d4bb442044fab8ac56,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.939
+      value: 0.991
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d094d1aacc2b90d4bb442044fab8ac56,
         type: 3}
@@ -4896,8 +4896,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.4263916, y: -25.213745}
-  m_SizeDelta: {x: -1043.2247, y: -222.094}
+  m_AnchoredPosition: {x: 2, y: 6}
+  m_SizeDelta: {x: -1043.2247, y: -533.0441}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2146317826
 MonoBehaviour:
